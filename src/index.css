@@ -1,5 +1,7 @@
+@import "fonts.css";
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Mono", monospace;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -42,13 +44,15 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
   display: inline-block;
-  box-shadow: blue 0px 0px 0px 2px inset, rgb(31, 193, 27) 10px -10px,
-    rgb(255, 217, 19) 20px -20px, rgb(255, 156, 85) 30px -30px,
-    rgb(255, 85, 85) 40px -40px;
-  padding: 1rem;
   background-color: blue;
+  box-shadow: rgb(31, 193, 27) 10px -10px, rgb(255, 217, 19) 20px -20px,
+    rgb(255, 156, 85) 30px -30px, rgb(255, 85, 85) 40px -40px;
+  /* box-shadow: #628e90 10px -10px, #b4cde6 20px -20px;
+  background-color: #f5efe6; */
+  padding: 1rem;
   margin-top: 4rem;
   color: white;
+  /* color: #213547; */
 }
 
 button {
@@ -92,6 +96,7 @@ button:disabled {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }

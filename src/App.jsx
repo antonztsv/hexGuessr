@@ -4,7 +4,6 @@ import Color from "./components/Color";
 import Guesses from "./components/Guesses";
 import Header from "./components/Header";
 import Scorelist from "./components/Scorelist";
-import Score from "./components/Scorelist";
 import Status from "./components/Status";
 
 function App() {
