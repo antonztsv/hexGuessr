@@ -47,6 +47,7 @@ h1 {
     rgb(255, 85, 85) 40px -40px;
   padding: 1rem;
   background-color: blue;
+  margin-top: 4rem;
 }
 
 button {
@@ -73,6 +74,7 @@ button:disabled {
 @media screen and (max-width: 640px) {
   h1 {
     font-size: 2rem;
+    margin-top: 3rem;
   }
 
   button {
@@ -81,12 +83,6 @@ button:disabled {
 
   .color {
     max-height: 200px;
-  }
-
-  .guess {
-    display: none;
-    /* justify-content: space-between;
-    align-items: center; */
   }
 }
 

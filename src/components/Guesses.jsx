@@ -1,11 +1,13 @@
 import React from "react";
 
+import Button from "./Button";
+
 const Guesses = ({ onClick, colors }) => {
   return (
     <div className="guess">
-      <button onClick={onClick}>{colors[0]}</button>
-      <button onClick={onClick}>{colors[1]}</button>
-      <button onClick={onClick}>{colors[2]}</button>
+      <Button onClick={onClick} text={colors[0]} />
+      <Button onClick={onClick} text={colors[1]} />
+      <Button onClick={onClick} text={colors[2]} />
     </div>
   );
 };
