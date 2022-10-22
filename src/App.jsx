@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import "./App.css";
 import Color from "./components/Color";
 import Guesses from "./components/Guesses";
 import Header from "./components/Header";
