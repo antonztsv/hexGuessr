@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 
 import "./App.css";
 import Color from "./components/Color";
+import Guesses from "./components/Guesses";
 import Header from "./components/Header";
+import Status from "./components/Status";
 
 function App() {
   const [color, setColor] = useState(null);
@@ -51,27 +53,30 @@ function App() {
 
       setTimeout(() => {
         setStatus(null);
-      }, 2000);
+      }, 1500);
     } else {
       setStatus("Wrong!");
       e.target.disabled = true;
 
       setTimeout(() => {
         setStatus(null);
-      }, 2000);
+      }, 1500);
     }
   };
 
   return (
     <div>
       <Header text={"hexGuessr"} />
-      <div className="guess">
-        <button onClick={checkGuess}>{allColors[0]}</button>
-        <button onClick={checkGuess}>{allColors[1]}</button>
-        <button onClick={checkGuess}>{allColors[2]}</button>
-      </div>
+      <Guesses onClick={checkGuess} colors={allColors} />
       <Color color={color} />
-      <p className="status">{status}</p>
+      <Status text={status} />
+      <a
+        href="https://github.com/antonztsv"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Github
+      </a>
     </div>
   );
 }
