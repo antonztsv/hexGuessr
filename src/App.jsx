@@ -70,13 +70,6 @@ function App() {
       <Guesses onClick={checkGuess} colors={allColors} />
       <Color color={color} />
       <Status text={status} />
-      <a
-        href="https://github.com/antonztsv"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Github
-      </a>
     </div>
   );
 }
