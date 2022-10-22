@@ -10,6 +10,7 @@ import Status from "./components/Status";
 function App() {
   const [color, setColor] = useState(null);
   const [allColors, setAllColors] = useState(Array(3));
+  const [guesses, setGuesses] = useState(0);
   const [status, setStatus] = useState(null);
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
@@ -26,6 +27,19 @@ function App() {
   useEffect(() => {
     setColor(allColors[getRandomInt(3)]);
   }, [allColors]);
+
+  useEffect(() => {
+    if (guesses === 2) {
+      setStatus("Wrong again, keep trying!");
+      setTimeout(() => {
+        setStatus(null);
+      }, 2500);
+      setScore(0);
+      setGuesses(0);
+
+      newColors();
+    }
+  }, [guesses]);
 
   const generateColor = () => {
     const color = Math.floor((Math.random() * 0xffffff) << 0)
@@ -56,7 +70,11 @@ function App() {
     const guess = e.target.innerText;
 
     if (guess === color) {
+      setGuesses(0);
       setStatus("Correct!");
+      setTimeout(() => {
+        setStatus(null);
+      }, 2500);
 
       setScore((prevScore) => {
         const newScore = prevScore + 1;
@@ -70,17 +88,14 @@ function App() {
       });
 
       newColors();
-
-      setTimeout(() => {
-        setStatus(null);
-      }, 1500);
     } else {
+      setGuesses(guesses + 1);
       setStatus("Wrong!");
-      e.target.disabled = true;
-
       setTimeout(() => {
         setStatus(null);
-      }, 1500);
+      }, 2500);
+
+      e.target.disabled = true;
     }
   };
 
