@@ -3,14 +3,23 @@ import { useEffect, useState } from "react";
 import Color from "./components/Color";
 import Guesses from "./components/Guesses";
 import Header from "./components/Header";
+import Scorelist from "./components/Scorelist";
+import Score from "./components/Scorelist";
 import Status from "./components/Status";
 
 function App() {
   const [color, setColor] = useState(null);
   const [allColors, setAllColors] = useState(Array(3));
   const [status, setStatus] = useState(null);
+  const [score, setScore] = useState(0);
+  const [highscore, setHighscore] = useState(0);
 
   useEffect(() => {
+    const localHighscore = localStorage.getItem("highscore");
+    if (localHighscore) {
+      setHighscore(localHighscore);
+    }
+
     newColors();
   }, []);
 
@@ -48,6 +57,18 @@ function App() {
 
     if (guess === color) {
       setStatus("Correct!");
+
+      setScore((prevScore) => {
+        const newScore = prevScore + 1;
+
+        if (newScore > highscore) {
+          setHighscore(newScore);
+          localStorage.setItem("highscore", newScore);
+        }
+
+        return newScore;
+      });
+
       newColors();
 
       setTimeout(() => {
@@ -66,6 +87,7 @@ function App() {
   return (
     <div>
       <Header text={"hexGuessr"} />
+      <Scorelist score={score} highscore={highscore} />
       <Guesses onClick={checkGuess} colors={allColors} />
       <Color color={color} />
       <Status text={status} />
