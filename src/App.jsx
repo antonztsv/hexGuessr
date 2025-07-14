@@ -14,6 +14,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
+  // initial game state
   useEffect(() => {
     const localHighscore = localStorage.getItem("highscore");
     if (localHighscore) {
@@ -23,10 +24,12 @@ function App() {
     newColors();
   }, []);
 
+  // set correct color
   useEffect(() => {
     setColor(allColors[getRandomInt(3)]);
   }, [allColors]);
 
+  // reset game on too many guesses
   useEffect(() => {
     if (guesses === 2) {
       setStatus("Wrong again, keep trying!");
@@ -48,9 +51,7 @@ function App() {
     return `#${color}`;
   };
 
-  const getRandomInt = (max) => {
-    return Math.floor(Math.random() * max);
-  };
+  const getRandomInt = (max) => Math.floor(Math.random() * max);
 
   const newColors = () => {
     const buttons = document.querySelectorAll("button");
